@@ -21,11 +21,11 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-       <Route path="/*" />
-       <Route path="/searchresults" />
-       <Route path="/video" />
-       <Route path="/register" />
-       <Route path="/login" />
+       <Route path="/*" element={<YouTubePage />} />
+       <Route path="/searchresults" element={<SearchResultsPage />} />
+       <Route path="/video" element={<VideoPage />} />
+       <Route path="/register" element={<RegisterPage />}/>
+       <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );
