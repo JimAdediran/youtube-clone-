@@ -3,9 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
-import HomePage from "./pages/HomePage/HomePage";
+import YouTubePage from "./pages/YouTubePage/YouTubePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import VideoPage from "./pages/VideoPage"
+import SearchResultsPage from "./pages/SearchResultsPage"
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -19,18 +21,12 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+       <Route path="/*" />
+       <Route path="/searchresults" />
+       <Route path="/video" />
+       <Route path="/register" />
+       <Route path="/login" />
       </Routes>
-      <Footer />
     </div>
   );
 }
