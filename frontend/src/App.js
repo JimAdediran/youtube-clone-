@@ -6,8 +6,8 @@ import "./App.css";
 import YouTubePage from "./pages/YouTubePage/YouTubePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import VideoPage from "./pages/VideoPage"
-import SearchResultsPage from "./pages/SearchResultsPage"
+import VideoPage from "./pages/VideoPage/VideoPage";
+import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
