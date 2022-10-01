@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { KEY } from "../../localKey"
 import { Link, useParams } from "react-router-dom"
+import SearchBar from "../../components/SearchBar/SearchBar"
 
 const SearchResultsPage = () => {
     const {search} = useParams()

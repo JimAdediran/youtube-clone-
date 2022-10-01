@@ -12,6 +12,7 @@ import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
@@ -20,13 +21,20 @@ function App() {
   return (
     <div>
       <Navbar />
+      <SearchBar />
       <Routes>
-       <Route path="/*" element={<YouTubePage />} />
-       <Route path="/searchresults" element={<SearchResultsPage />} />
-       <Route path="/video" element={<VideoPage />} />
-       <Route path="/register" element={<RegisterPage />}/>
-       <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={
+          <PrivateRoute>
+            <YouTubePage />
+          </PrivateRoute>
+        }
+        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/videos" element={<VideoPage />} />
+        <Route path="/search" element={<SearchResultsPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
