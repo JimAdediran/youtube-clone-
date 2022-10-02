@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { KEY } from "../../localKey"
 import { Link, useParams } from "react-router-dom"
-import SearchBar from "../../components/SearchBar/SearchBar"
+
 
 const SearchResultsPage = () => {
     const {search} = useParams()
@@ -29,7 +29,7 @@ const SearchResultsPage = () => {
         videos.map((video) => {
             return(
                 <div key={video.snippet.videoId}>
-                    {video.snippet.title}
+                    <p>{video.snippet.title}</p>
                     <Link to ={`/videos/${video.videoId}`}>
                         <img src={video.snippet.thumbnails.default.url} />
                     </Link> 
