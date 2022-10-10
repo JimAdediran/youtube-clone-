@@ -3,10 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 // Pages Imports
-import YouTubePage from "./pages/YouTubePage/YouTubePage";
+// import YouTubePage from "./pages/YouTubePage/YouTubePage";
+import HomePage from "./pages/HomePageEx/HomePageEx"
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import VideoPage from "./pages/VideoPage/VideoPage";
+// import VideoPage from "./pages/VideoPage/VideoPage"; 
 import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
 
 // Component Imports
@@ -23,13 +24,13 @@ function App() {
       <Routes>
         <Route path="/" element={
           <PrivateRoute>
-            <YouTubePage />
+            <HomePage />
           </PrivateRoute>
         }
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/videos" element={<VideoPage />} />
+        { /* <Route path="/videos" element={<VideoPage />} /> */}
         <Route path="/search" element={<SearchResultsPage />} />
       </Routes>
       <Footer />

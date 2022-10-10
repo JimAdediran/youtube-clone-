@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-
+import { KEY } from "../../localKey"
 import axios from "axios";
 
 const HomePage = () => {
@@ -9,30 +9,33 @@ const HomePage = () => {
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
-    const fetchCars = async () => {
+    const fetchVideoData = async (searchTerm = "bob ross") => {
       try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setCars(response.data);
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${KEY}`
+        );
+        setVideoData(response.data.items);
+        console.log(response.data.items)
       } catch (error) {
         console.log(error.response.data);
       }
     };
-    fetchCars();
+    fetchVideoData();
   }, [token]);
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
+      {videoData && videoData.map((video) => (
+          <p key={video.id.videoId}>
+           Title: {video.snippet.title} <br />
+            <img src={video.snippet.thumbnails.medium.url} />
+            <br />
+           Description: {video.snippet.description}
+           <br />
+           <br />
+           <br />
           </p>
         ))}
     </div>
