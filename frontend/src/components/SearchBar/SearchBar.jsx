@@ -5,7 +5,7 @@ const SearchBar = props => {
 
     const handleSubmit = (event) => {
     event.preventDefault()
-    props.searchVideos(search)
+    props.fetchVideoData(search)
     setSearch("")
     }
 

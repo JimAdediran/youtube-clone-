@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { KEY } from "../../localKey"
 import axios from "axios";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -12,24 +13,30 @@ const HomePage = () => {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
-    const fetchVideoData = async (searchTerm = "bob ross") => {
-      try {
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${KEY}`
-        );
-        setVideoData(response.data.items);
-        console.log(response.data.items)
-      } catch (error) {
-        console.log(error.response.data);
-      }
-    };
     fetchVideoData();
   }, [token]);
+
+  const fetchVideoData = async (searchTerm = "bob ross") => {
+    try {
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&type=video&part=snippet&key=${KEY}`
+      );
+      setVideoData(response.data.items);
+      console.log(response.data.items)
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+  fetchVideoData();
+
+
   return (
     <div className="container">
+      <SearchBar fetchVideoData={fetchVideoData}/>
       <h1>Home Page for {user.username}!</h1>
       {videoData && videoData.map((video) => (
           <p key={video.id.videoId}>
-           Title: {video.snippet.title} <br />
+           Title: {video.snippet.title} 
+           <br />
             <img src={video.snippet.thumbnails.medium.url} />
             <br />
            Description: {video.snippet.description}
