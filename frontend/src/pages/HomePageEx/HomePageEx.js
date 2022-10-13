@@ -4,16 +4,17 @@ import useAuth from "../../hooks/useAuth";
 import { KEY } from "../../localKey"
 import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { DATA } from "../../localData";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
-  const [videoData, setVideoData] = useState([]);
+  const [videoData, setVideoData] = useState([DATA]);
 
   useEffect(() => {
-    fetchVideoData();
+    //fetchVideoData();
   }, [token]);
 
   const fetchVideoData = async (searchTerm = "bob ross") => {
