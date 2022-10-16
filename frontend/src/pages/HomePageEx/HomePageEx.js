@@ -13,6 +13,10 @@ const HomePage = () => {
   const [user, token] = useAuth();
   const [videoData, setVideoData] = useState([]);
 
+  
+
+
+
   useEffect(() => {
     fetchVideoData();
   }, [token]);
@@ -31,7 +35,7 @@ const HomePage = () => {
 
 
   return (
-    <div className="container">
+    <div className="homepage">
       <SearchBar fetchVideoData={fetchVideoData}/>
       <h1>Home Page for {user.username}!</h1>
       {videoData && videoData.map((video) => (

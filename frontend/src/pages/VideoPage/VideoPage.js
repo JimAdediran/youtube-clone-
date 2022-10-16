@@ -4,12 +4,16 @@ import { KEY } from "../../localKey";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddComment from "../../components/AddComment/AddComment";
+import VideoDisplay from "../../components/VideoDisplay/VideoDisplay";
 
 
 const VideoPage = () => {;
-    const [comments, setComments] = useState("")
+    const { videoId } = useParams();
     const { id } = useParams();
+    const { title, description } = useParams()
     const [videos, setVideos] = useState("")
+   
+
 
     useEffect(() => {
         fetchRelatedVideos();
@@ -29,13 +33,9 @@ const fetchRelatedVideos = async (search = "nba") => {
 
 
 return (
-    <div>
-        <div>
-        <iframe id="player" type="text/html" width="640" height="390"
-  src={`http://www.youtube.com/embed/{id}`}
-  frameborder="0"></iframe>
-        </div>
-        <div>
+  <div>
+        <div className="video">
+          <VideoDisplay />
           <AddComment />
         </div>
         <div>
@@ -54,7 +54,7 @@ return (
           </p>
         ))}
         </div>
-    </div>
+  </div>
 )
 }
 
