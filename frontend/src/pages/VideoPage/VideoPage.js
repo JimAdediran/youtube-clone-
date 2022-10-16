@@ -3,26 +3,18 @@ import { useParams } from "react-router-dom";
 import { KEY } from "../../localKey";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AddComment from "../../components/AddComment/AddComment";
+
 
 const VideoPage = () => {;
-    //const [comments, setComments] = useState("")
+    const [comments, setComments] = useState("")
     const { id } = useParams();
     const [videos, setVideos] = useState("")
 
     useEffect(() => {
-        //fetchComments();
         fetchRelatedVideos();
     }, [])
 
-{/*const fetchComments = async () => {
-    try {
-        let response = await axios.get(`http://127.0.0.1:8000/api/comment/${id}`
-        );
-        setComments(response.data);
-      } catch (error) {
-        console.log(error.response.data);
-      }
-} */}
 
 const fetchRelatedVideos = async (search = "nba") => {
     try {
@@ -42,6 +34,9 @@ return (
         <iframe id="player" type="text/html" width="640" height="390"
   src={`http://www.youtube.com/embed/{id}`}
   frameborder="0"></iframe>
+        </div>
+        <div>
+          <AddComment />
         </div>
         <div>
         {videos && videos.map((video) => (
