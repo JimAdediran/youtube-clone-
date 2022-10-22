@@ -35,7 +35,7 @@ const fetchRelatedVideos = async (search = "nba") => {
 return (
   <div>
         <div className="video">
-          <VideoDisplay />
+          <VideoDisplay id={id} />
           <AddComment />
         </div>
         <div>
@@ -43,7 +43,7 @@ return (
           <p key={video.id.videoId}>
            Title: {video.snippet.title} 
            <br />
-           <Link to={`/videos/${video.id.videoId}`}>
+           <Link to={`/videos/${video.id.videoId}/`}>
             <img src={video.snippet.thumbnails.medium.url} />
            </Link>
             <br />

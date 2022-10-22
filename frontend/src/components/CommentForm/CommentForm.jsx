@@ -21,6 +21,7 @@ return (
          onChange={(event) => setTextPost(event.target.value)}
          />
          </label>
+         <button>Submit</button>
 </form>
 
 )    
