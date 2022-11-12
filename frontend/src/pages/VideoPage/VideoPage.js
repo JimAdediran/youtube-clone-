@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { KEY } from "../../localKey";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddComment from "../../components/AddComment/AddComment";
 import VideoDisplay from "../../components/VideoDisplay/VideoDisplay";
+import VideoInfo from "../../components/VideoInfo/VideoInfo";
 
 
 const VideoPage = () => {;
     const { videoId } = useParams();
     const { id } = useParams();
-    const { title, description } = useParams()
+    const { state } = useLocation();
     const [videos, setVideos] = useState("")
    
 
@@ -36,6 +37,7 @@ return (
   <div>
         <div className="video">
           <VideoDisplay id={id} />
+        
           <AddComment />
         </div>
         <div>
